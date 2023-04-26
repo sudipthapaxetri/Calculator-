@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 
-public class Calculator {
+public class Calculator  implements ActionListener{
     JFrame frame;
    JTextField textField;
     JButton[] numberButton = new JButton[10];
@@ -50,7 +50,7 @@ public class Calculator {
 
         for(int i=0; i<9; i++){
             functionButton[i].setFont(myFont);
-            functionButton[i].addActionListener((ActionListener) this);
+            functionButton[i].addActionListener(this);
             functionButton[i].setRequestFocusEnabled(false);
 
 
@@ -58,7 +58,7 @@ public class Calculator {
         }
         for(int i=0; i<10; i++){
             numberButton[i] = new JButton(String.valueOf(i));
-            numberButton[i].addActionListener((ActionListener) this);
+            numberButton[i].addActionListener(this);
             numberButton[i].setFont(myFont);
             numberButton[i].setRequestFocusEnabled(false);
 
@@ -109,12 +109,12 @@ public class Calculator {
 
     }
     public static void main(String[] args) {
-        Calculator calculator = new Calculator();
+         new Calculator();
     }
 
 
     @Override
-    private void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e) {
 
         for(int i=0; i<10; i++){
             if(e.getSource() == numberButton[i]){
